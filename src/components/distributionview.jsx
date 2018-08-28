@@ -12,7 +12,9 @@ export class DistributionView extends Component {
     };
 
     this.onWidth = (widthEl) => {
-      this.setState({plotWidth: 0.75 * widthEl.offsetWidth});
+      if (widthEl) { // can be unset in tests
+        this.setState({plotWidth: 0.75 * widthEl.offsetWidth});
+      }
     };
   }
 
