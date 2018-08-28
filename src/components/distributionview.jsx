@@ -10,6 +10,10 @@ export class DistributionView extends Component {
     this.state = {
       mode: "graph",
     };
+
+    this.onWidth = (widthEl) => {
+      this.setState({plotWidth: 0.75 * widthEl.offsetWidth});
+    };
   }
 
   handleChange = (event) => {
@@ -43,6 +47,7 @@ export class DistributionView extends Component {
           </ToggleButtonGroup>
         </Row>
         <Row>
+          <div ref={this.onWidth}></div>
           {this.state.mode === "graph" &&
             <MetricsGraphics
               title={metric}
