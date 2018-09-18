@@ -41,6 +41,7 @@ export class SummaryView extends Component {
         <h3>Never true: {neverPct}</h3>
         <p>For {channel} {version}, {neverPct} of users never reported true for {metric}</p>
         <p></p>
+        <p><a onClick={this.props.changeTab.bind(this, "distribution")}><i className="fas fa-chart-bar"></i> See more</a></p>
       </Row>
     );
   }
@@ -78,6 +79,7 @@ export class SummaryView extends Component {
         <p>The most common categories reported by users for {metric} on Firefox {channel} {version} are
           {this.renderFirstN(orderedData, NUM_COMMON_CATEGORIES)}.
         </p>
+        <p><a onClick={this.props.changeTab.bind(this, "distribution")}><i className="fas fa-chart-bar"></i> See more</a></p>
       </Row>
     );
   }
@@ -95,8 +97,10 @@ export class SummaryView extends Component {
       <Row>
         <h3>Median: {median}</h3>
         <p>The median value for {metric} on {channel} {version} was {median}.</p>
+        <p><a onClick={this.props.changeTab.bind(this, "distribution")}><i className="fas fa-chart-bar"></i> See more</a></p>
         <h3>95th Percentile: {nfifth}</h3>
         <p>The 95th percentile for {metric} on {channel} {version} was {nfifth}.</p>
+        <p><a onClick={this.props.changeTab.bind(this, "distribution")}><i className="fas fa-chart-bar"></i> See more</a></p>
         <h3>
           {change > 0 &&
             <i className="fas fa-arrow-up"></i>
@@ -111,6 +115,7 @@ export class SummaryView extends Component {
           {change < 0 &&
             " decreased"
           } by {change}%.</p>
+        <p><a onClick={this.props.changeTab.bind(this, "comparison")}><i className="fas fa-chart-area"></i> See more</a></p>
       </Row>
     );
   }

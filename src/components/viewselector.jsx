@@ -5,11 +5,26 @@ import {DistributionView} from "./distributionview.jsx";
 import {ComparisonView} from "./comparisonview.jsx";
 
 export class ViewSelector extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      key: "summary",
+    };
+
+    // Ensure we use the component's `this`
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(key) {
+    this.setState({key});
+  }
+
   render() {
     return (
       <div className="view-selector">
         <Tabs
-          defaultActiveKey={"summary"}
+          activeKey={this.state.key}
+          onSelect={this.handleSelect}
           id="view-tabs"
         >
           <Tab
@@ -18,6 +33,7 @@ export class ViewSelector extends Component {
           >
             <SummaryView
               dataStore = {this.props.dataStore}
+              changeTab={this.handleSelect}
             />
           </Tab>
           <Tab

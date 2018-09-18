@@ -31,3 +31,8 @@
 .nav-tabs > li:first-child {
   margin-inline-start: 1em;
 }
+
+a {
+  cursor: pointer;
+  color: inherit;
+}
